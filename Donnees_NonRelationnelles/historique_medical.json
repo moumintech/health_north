@@ -1,0 +1,17 @@
+-- Historique patient
+
+{
+    "patient_id": "P001",
+    "nom": "Dupont",
+    "prenom": "Jean",
+    "historique": [
+        {
+            "date": "2024-01-01",
+            "description": "Opération des amygdales"
+        },
+        {
+            "date": "2023-12-15",
+            "description": "Consultation annuelle"
+        }
+    ]
+}
