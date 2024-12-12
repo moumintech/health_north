@@ -1,11 +1,23 @@
 -- Historique dossier patient
+DELIMITER $$
+
 CREATE TRIGGER HistoriserDossierPatient
-AFTER UPDATE ON DossierPatient
+BEFORE UPDATE ON dossierpatient
 FOR EACH ROW
 BEGIN
-    INSERT INTO HistoriqueDossier (dossier_id, ancien_medical, nouveau_medical, date_modification)
-    VALUES (OLD.dossier_id, OLD.informations_medicaux, NEW.informations_medicaux, NOW());
-END;
+    SET NEW.historique = JSON_ARRAY_APPEND(
+        OLD.historique,
+        '$',
+        JSON_OBJECT(
+            'ancien', OLD.informations_medicaux,
+            'nouveau', NEW.informations_medicaux,
+            'date', NOW()
+        )
+    );
+END$$
+
+DELIMITER ;
+
 
 -- Calculer age du patient
 CREATE TRIGGER CalculerAgePatient
