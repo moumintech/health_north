@@ -1,0 +1,21 @@
+import jwt from 'jsonwebtoken';
+import { Request, Response, NextFunction } from 'express';
+
+const SECRET_KEY = 'votre_clé_secrète';
+
+const verifyToken = (req: Request, res: Response, next: NextFunction) => {
+    const token = req.headers['authorization']?.split(' ')[1];
+    if (!token) {
+        return res.status(403).json({ message: 'Token manquant' });
+    }
+
+    try {
+        const decoded = jwt.verify(token, SECRET_KEY) as { id: string; name: string }; // Remplacez le type par celui de votre payload
+        req.user = decoded; // Ajoutez la propriété à req
+        next();
+    } catch (err) {
+        res.status(401).json({ message: 'Token invalide' });
+    }
+};
+
+export default verifyToken;
