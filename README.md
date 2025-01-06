@@ -60,7 +60,47 @@
 1. Importez le script SQL dans MariaDB :
    ```bash
    SOURCE SQL/creation_base.sql;
+   
    ```
+   
+### **Base de Données**
+1. Importer le script SQL dans MariaDB :
+   ```sql
+   SOURCE Scripts_SQL/creation_base.sql;
+   ```
+
+### **API REST et Service d'authentification**
+1. Va dans le dossier `API/` et installe les dépendances :
+   ```bash
+   npm install
+   ```
+2. Configure le fichier `.env` avec les variables nécessaires (clé JWT, port, etc.).
+   - Exemple :
+     ```plaintext
+     JWT_SECRET=yourSecretKey
+     JWT_EXPIRES_IN=1h
+     PORT=3000
+     ```
+3. Lance l’API et le service d'authentification :
+   ```bash
+   node server.js
+   ```
+
+### **Application Mobile**
+1. Ouvre le projet dans **Android Studio**  avec l'extension Flutter.
+2. Installe les dépendances :
+   ```bash
+   flutter pub get
+   ```
+3. Lance l'application sur un simulateur ou un appareil réel :
+   ```bash
+   flutter run
+   ```
+
+### **Application Lourde**
+1. Ouvre le projet dans ton IDE préféré (, IntelliJ, .).
+2. Compile et exécute l'application.
+
 
 ## Auteur
 
