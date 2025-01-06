@@ -1,0 +1,15 @@
+const bcrypt = require("bcryptjs");
+
+// Simuler une base de données
+let users = [];
+
+const register = async (req, res) => {
+  const { username, password } = req.body;
+
+  // Hacher le mot de passe
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  // Ajouter l'utilisateur à la "base de données"
+  users.push({ username, password: hashedPassword });
+  res.status(201).send("Utilisateur enregistré avec succès !");
+};
