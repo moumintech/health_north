@@ -31,7 +31,6 @@
 - Java JDK pour l'application lourde.
 - Node.js pour l'API REST.
 
-<<<<<<< HEAD
 
 # Projet Médical - Service d’hébergement avec WampServer
 
